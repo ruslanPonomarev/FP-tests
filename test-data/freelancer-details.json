@@ -1,0 +1,19 @@
+	
+{
+  "freelancerDtoResponse": {
+    "id": 854,
+    "firstName": null,
+    "lastName": null,
+    "phoneNumber": null,
+    "profilePhoto": "https://d3nysjqokcp0he.cloudfront.net/null",
+    "infix": null,
+    "email": "string@em.com",
+    "dateJoined": "2023-10-08T09:17:49.564+00:00",
+    "onboardingStatus": "REGISTERING",
+    "status": "PENDING",
+    "description": null,
+    "postalCode": null
+  },
+  "legalEntityDto": null,
+  "documents": []
+}

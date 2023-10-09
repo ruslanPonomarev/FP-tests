@@ -1,0 +1,20 @@
+{
+  "name": "fp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/plugin-transform-typescript": "^7.22.15",
+    "@faker-js/faker": "^8.1.0",
+    "@playwright/test": "^1.38.1",
+    "@testomatio/reporter": "^1.0.13",
+    "@types/node": "^20.8.2",
+    "luxon": "^3.4.3",
+    "rimraf": "^5.0.5"
+  }
+}
