@@ -1,6 +1,4 @@
-# This is a basic workflow that is manually triggered
-
-name: Testomatio Tests
+name: Playwright reporting
 
 on:
   workflow_dispatch:
@@ -13,19 +11,32 @@ on:
         required: false
       testomatio:
         required: false
+      testomatio_url:
+        required: false
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
+  reporting:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node-version: [18.x]
+
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: npx codeceptjs run --grep "${{ github.event.inputs.grep }}"
-      env:
-        TESTOMATIO: "${{ github.event.inputs.testomatio }}"
-        TESTOMATIO_RUN: "${{ github.event.inputs.run }}"
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup dependencies
+        run: npm i
+
+      - name: Playwright browser updates
+        run: npx playwright install
+
+      - name: Run tests
+        run: npx playwright test --grep "${{ github.event.inputs.grep }}"
+        env:
+          TESTOMATIO: "${{ secrets.TESTOMATIO }}"
+          TESTOMATIO_RUN: "${{ github.event.inputs.run }}"
