@@ -22,6 +22,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     // ...
+    ['list'],
     ['./node_modules/@testomatio/reporter/lib/adapter/playwright.js', {
       apiKey: process.env.TESTOMATIO,
     }]
